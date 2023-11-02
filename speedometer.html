@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        border-style: groove;
+        height: 270px;
+        width: 400px;
+        margin: auto;
+        padding: 10px;
+        margin-top:150px ;
+        text-align: center;
+        border-radius: 10px;
+        border-color: gray;
+        background-color: rgba(92, 195, 251, 0.349);
+    }
+    .label{
+        margin-top: 100px;
+        font-family: serif;
+        font-weight: bold;
+        font-size: x-large;
+        color: black;
+        border-radius: 5px;
+        background-color: #fafafa88;
+    }
+    .input{
+        margin-top: 50px;
+        border-radius: 5px;
+        border-color: skyblue;
+        height: 20px;
+        background-color: thistle;
+        color: black;
+        font-weight: bold;
+    }
+    .submit{
+        margin-top: 40px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border-color: black;
+        height: 20px;
+        width: 100px;
+    }
+    .select{
+        margin-top: 20px;
+        border-color: lightskyblue;
+        height: 25px;
+        font-weight: bold;
+        color: dimgrey ;
+    }
+    .result{
+        border-style: outset;
+        
+    }
+</style>
+<body style="background-image: url(https://i.pinimg.com/originals/94/81/aa/9481aa84d9446fd65a074a0341cbdbf2.jpg); background-size: cover; background-repeat: no-repeat;">
+    <form id="speedcal" onsubmit="calculatespeed(); return false">
+    <div class="box">
+        <label class="label" for="speed">Please enter the speed you would like to convert</label>
+        <br>
+        <input placeholder="Enter Km/Meter" class="input" type="number" id="speed">
+        <br>
+        <select class="select" name="select_velo" id="select_velo">
+            <option value="kmph">km per hour</option>
+            <option value="mps">meter per sec</option>
+        </select>
+        <br>
+
+        <input class="submit" type="submit" id="speed" name="speed">
+        <br>
+        <span class="result" id="resultcontainer"></span>
+    </div>
+    </form>
+    <script>
+        
+        const calculatespeed = () =>{
+
+            const numbervelo = document.getElementById("speed").value;
+
+            const selectvelo = document.getElementById("select_velo");
+            const valuevelo = select_velo.options[selectvelo.selectedIndex].value;
+
+            const kmtom = (kmph) =>{
+                let meterpersec = Math.round(kmph * 1000/3600);
+                return meterpersec;
+            }
+            const mtokm = (mps) =>{
+                let kmeterpersec = Math.round(mps* 3600/1000);
+                return kmeterpersec;
+            }
+
+            let result;
+
+            if(valuevelo=='kmph') {
+                result =kmtom(numbervelo)
+                document.getElementById("resultcontainer").innerHTML=` =${result}m/s`;
+            } 
+            else if (valuevelo=='mps'){
+                result =mtokm(numbervelo)
+                document.getElementById("resultcontainer").innerHTML=` =${result}km/hr`;
+            }
+        }
+
+    </script>
+</body>
+</html>
